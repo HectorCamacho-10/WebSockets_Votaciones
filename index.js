@@ -46,9 +46,27 @@ io.on('connection',(socket)=>{
     console.log("new")
 
     socket.on('mg', (dt)=>{
-       io.sockets.emit('mg', dt);
+        actualizar(dt.i);
+       io.sockets.emit('mg', {
+           m:mydatas[0],
+           n:mydatas[1],
+           r:mydatas[2],
+           b:mydatas[3],
+           a:mydatas[4]
+       });
+       
+
     });
 
+    socket.on('dtdt',()=>{
+        io.sockets.emit('d',{
+            m:mydatas[0],
+           n:mydatas[1],
+           r:mydatas[2],
+           b:mydatas[3],
+           a:mydatas[4]
+        });
+    });
     socket.on('usuario',(dt)=>{
        var bandera = insertar(verficacion(dt.nombre,dt.password), dt.nombre,dt.password);//false se inserto en bd true existe
         socket.emit('usuario',{

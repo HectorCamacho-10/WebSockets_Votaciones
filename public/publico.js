@@ -98,8 +98,12 @@ var indice = 0;
 var planillas = [0,0,0,0,0];
 
 //ACTUALIZAR PLANILLAS
-const fp = (i,v)=>{
-    planillas[i]+=v;
+const fp = (m,n,r,b,a)=>{
+    planillas[0]=m;
+    planillas[1]=n;
+    planillas[2]=r;
+    planillas[3]=b;
+    planillas[4]=a;
 }
 
 function valors_campos(){
@@ -186,9 +190,21 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-socket.on('mg',function(dt){
-    console.log(dt.i);
-    fp(dt.i,1);
+
+
+function cg(){
+    socket.emit('dtdt');
+    myChart.update();
+    socket.on('d',dtt=>{
+        fp(dtt.m,dtt.n,dtt.r,dtt.b,dtt.a);
+        myChart.update();
+    });
+    console.log(planillas);
+    console.log('se cargo');
+    socket.on('mg',function(dt){
+    console.log(dt);
+    fp(dt.m,dt.n,dt.r,dt.b,dt.a);
     myChart.update();
 });
-
+}
+cg();

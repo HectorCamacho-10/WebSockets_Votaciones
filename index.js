@@ -39,6 +39,11 @@ function insertar(bol , nm, psw){
     }
 }
 
+function actualizar(i){
+    mydatas[i] +=1;
+    console.log(mydatas);
+}
+
 
 
 

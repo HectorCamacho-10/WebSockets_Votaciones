@@ -162,7 +162,6 @@ var myChart = new Chart(ctx, {
             label: 'Total de votos',
             data: planillas,
             backgroundColor: [
-                'rgba(12,23,45,4)',
                 'rgba(128,0,128)',
                 'rgba(0,0,0)',
                 'rgba(255,0,0)',
